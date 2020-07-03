@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Restaurateur.DAO;
+using Restaurateur.Models;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Restaurateur
@@ -11,6 +13,41 @@ namespace Restaurateur
         public Reservations()
         {
             InitializeComponent();
+
+            RefreshGrid();
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            ReservationDao.Delete((long)(sender as Button).Tag);
+            RefreshGrid();
+        }
+
+        private void RefreshGrid()
+        {
+            ReservationsDataGrid.ItemsSource = ReservationDao.LoadAll();
+        }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow window = (MainWindow)Application.Current.MainWindow;
+            UserControl uc = new Forms.Reservations
+            {
+                DataContext = new ReservationModel()
+            };
+            window.GridMain.Children.Clear();
+            window.GridMain.Children.Add(uc);
+        }
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow window = (MainWindow)Application.Current.MainWindow;
+            UserControl uc = new Forms.Reservations();
+            ReservationModel model = ReservationDao.LoadById((long)(sender as Button).Tag);
+            model.Mode = "update";
+            uc.DataContext = model;
+            window.GridMain.Children.Clear();
+            window.GridMain.Children.Add(uc);
         }
     }
 }
