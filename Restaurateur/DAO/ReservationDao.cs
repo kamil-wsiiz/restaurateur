@@ -8,8 +8,17 @@ using System;
 
 namespace Restaurateur.DAO
 {
+    /// <summary>
+    /// DAO dla rezerwacji
+    /// </summary>
     class ReservationDao : BasicDao
     {
+        /// <summary>
+        /// Pobranie wszystkich rezerwacji z bazy danych
+        /// </summary>
+        /// <returns>
+        /// Lista rezerwacji
+        /// </returns>
         public static List<ReservationModel> LoadAll()
         {
             using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
@@ -19,6 +28,15 @@ namespace Restaurateur.DAO
             };
         }
 
+        /// <summary>
+        /// Pobranie rezerwacji z bazy danych po ID
+        /// </summary>
+        /// <param name="Id">
+        /// Id rezerwacji
+        /// </param>
+        /// <returns>
+        /// Model rezerwacji
+        /// </returns>
         public static ReservationModel LoadById(long Id)
         {
             using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
@@ -27,6 +45,12 @@ namespace Restaurateur.DAO
             };
         }
 
+        /// <summary>
+        /// Dodanie nowej rezerwacji
+        /// </summary>
+        /// <param name="reservation">
+        /// Model rezerwacji
+        /// </param>
         public static void Insert(ReservationModel reservation)
         {
             using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
@@ -35,6 +59,12 @@ namespace Restaurateur.DAO
             };
         }
 
+        /// <summary>
+        /// Aktualizacja rezerwacji
+        /// </summary>
+        /// <param name="reservation">
+        /// Model rezerwacji
+        /// </param>
         public static void Update(ReservationModel reservation)
         {
             using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
@@ -43,6 +73,12 @@ namespace Restaurateur.DAO
             };
         }
 
+        /// <summary>
+        /// Usunięcie rezerwacji po jej ID
+        /// </summary>
+        /// <param name="Id">
+        /// Id stolika
+        /// </param>
         public static void Delete(long Id)
         {
             using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))

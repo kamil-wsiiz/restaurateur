@@ -17,17 +17,36 @@ namespace Restaurateur
             RefreshGrid();
         }
 
+        /// <summary>
+        /// Obsługa przycisku usuwania
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            OrderDao.Delete((long)(sender as Button).Tag);
+            long id = (long)(sender as Button).Tag;
+            OrderModel model = OrderDao.LoadById(id);
+            WarehouseModel product = WarehouseDao.LoadById(model.ProductId);
+            product.Amount += model.Amount; // Przywrócenie produktu do magazynu
+            WarehouseDao.Update(product);
+            OrderDao.Delete(id);
+
             RefreshGrid();
         }
 
+        /// <summary>
+        /// Odświezanie danych
+        /// </summary>
         private void RefreshGrid()
         {
             OrdersDataGrid.ItemsSource = OrderDao.LoadAll();
         }
 
+        /// <summary>
+        /// Obsługa przycisku dodawania
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Add_Click(object sender, RoutedEventArgs e)
         {
             MainWindow window = (MainWindow)Application.Current.MainWindow;
@@ -39,6 +58,11 @@ namespace Restaurateur
             window.GridMain.Children.Add(uc);
         }
 
+        /// <summary>
+        /// Obsługa przycisku edycji
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
             MainWindow window = (MainWindow)Application.Current.MainWindow;

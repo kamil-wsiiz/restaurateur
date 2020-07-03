@@ -7,8 +7,17 @@ using System.Linq;
 
 namespace Restaurateur.DAO
 {
+    /// <summary>
+    /// DAO dla zamówień
+    /// </summary>
     class OrderDao : BasicDao
     {
+        /// <summary>
+        /// Pobranie wszystkich zamówień z bazy danych
+        /// </summary>
+        /// <returns>
+        /// Lista zamówień
+        /// </returns>
         public static List<OrderModel> LoadAll()
         {
             using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
@@ -18,6 +27,15 @@ namespace Restaurateur.DAO
             };
         }
 
+        /// <summary>
+        /// Pobranie zamówienia z bazy danych po ID
+        /// </summary>
+        /// <param name="Id">
+        /// Id zamówienia
+        /// </param>
+        /// <returns>
+        /// Model zamówienia
+        /// </returns>
         public static OrderModel LoadById(long Id)
         {
             using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
@@ -26,6 +44,12 @@ namespace Restaurateur.DAO
             };
         }
 
+        /// <summary>
+        /// Dodanie nowego zamówienia
+        /// </summary>
+        /// <param name="reservation">
+        /// Model zamówienia
+        /// </param>
         public static void Insert(OrderModel reservation)
         {
             using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
@@ -34,6 +58,12 @@ namespace Restaurateur.DAO
             };
         }
 
+        /// <summary>
+        /// Aktualizacja zamówienia
+        /// </summary>
+        /// <param name="reservation">
+        /// Model zamówienia
+        /// </param>
         public static void Update(OrderModel reservation)
         {
             using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
@@ -42,6 +72,12 @@ namespace Restaurateur.DAO
             };
         }
 
+        /// <summary>
+        /// Usunięcie zamówienia
+        /// </summary>
+        /// <param name="Id">
+        /// Id zamówienia
+        /// </param>
         public static void Delete(long Id)
         {
             using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))

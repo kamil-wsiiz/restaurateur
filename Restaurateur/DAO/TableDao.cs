@@ -7,8 +7,17 @@ using System.Linq;
 
 namespace Restaurateur.DAO
 {
+    /// <summary>
+    /// DAO dla ustawień stolików
+    /// </summary>
     class TableDao : BasicDao
     {
+        /// <summary>
+        /// Pobranie wszystkich stolików z bazy danych
+        /// </summary>
+        /// <returns>
+        /// Lista stolików
+        /// </returns>
         public static List<TableModel> LoadAll()
         {
             using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
@@ -18,6 +27,15 @@ namespace Restaurateur.DAO
             };
         }
 
+        /// <summary>
+        /// Pobranie stolika po jego numerze
+        /// </summary>
+        /// <param name="Id">
+        /// Numer stolika
+        /// </param>
+        /// <returns>
+        /// Model stolika
+        /// </returns>
         public static TableModel LoadById(long Id)
         {
             using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
@@ -26,6 +44,12 @@ namespace Restaurateur.DAO
             };
         }
 
+        /// <summary>
+        /// Dodanie nowego stolika
+        /// </summary>
+        /// <param name="table">
+        /// Model stolika
+        /// </param>
         public static void Insert(TableModel table)
         {
             using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
@@ -34,6 +58,12 @@ namespace Restaurateur.DAO
             };
         }
 
+        /// <summary>
+        /// Aktualizacja stolika
+        /// </summary>
+        /// <param name="table">
+        /// Model stolika
+        /// </param>
         public static void Update(TableModel table)
         {
             using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
@@ -42,6 +72,12 @@ namespace Restaurateur.DAO
             };
         }
 
+        /// <summary>
+        /// Usunięcie stolika po jego numerze
+        /// </summary>
+        /// <param name="Id">
+        /// Numer stolika
+        /// </param>
         public static void Delete(long Id)
         {
             using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))

@@ -7,8 +7,18 @@ using System.Linq;
 
 namespace Restaurateur.DAO
 {
+
+    /// <summary>
+    /// DAO dla magazynu
+    /// </summary>
     class WarehouseDao : BasicDao
     {
+        /// <summary>
+        /// Pobranie wszystkich produktów z magazynu
+        /// </summary>
+        /// <returns>
+        /// Lista produktów
+        /// </returns>
         public static List<WarehouseModel> LoadAll()
         {
             using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
@@ -18,6 +28,15 @@ namespace Restaurateur.DAO
             };
         }
 
+        /// <summary>
+        /// Pobranie produktu z magazynu po jego ID
+        /// </summary>
+        /// <param name="Id">
+        /// Id produktu
+        /// </param>
+        /// <returns>
+        /// Model produktu w magazynie
+        /// </returns>
         public static WarehouseModel LoadById(long Id)
         {
             using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
@@ -26,6 +45,12 @@ namespace Restaurateur.DAO
             };
         }
 
+        /// <summary>
+        /// Dodanie nowego produktu do magazynu
+        /// </summary>
+        /// <param name="table">
+        /// Model produktu w magazynie
+        /// </param>
         public static void Insert(WarehouseModel table)
         {
             using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
@@ -34,6 +59,12 @@ namespace Restaurateur.DAO
             };
         }
 
+        /// <summary>
+        /// Aktalizacja produktu w magazynie
+        /// </summary>
+        /// <param name="table">
+        /// Model produktu w magazynie
+        /// </param>
         public static void Update(WarehouseModel table)
         {
             using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
@@ -42,6 +73,12 @@ namespace Restaurateur.DAO
             };
         }
 
+        /// <summary>
+        /// Usunięcie produktu z magazynu
+        /// </summary>
+        /// <param name="Id">
+        /// Id produktu
+        /// </param>
         public static void Delete(long Id)
         {
             using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))

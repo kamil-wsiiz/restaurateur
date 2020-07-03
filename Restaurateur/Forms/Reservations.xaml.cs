@@ -14,10 +14,22 @@ namespace Restaurateur.Forms
         {
             InitializeComponent();
         }
-
+        
+        /// <summary>
+        /// Wysłanie formularza
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
+            // Pobranie modelu z formularza
             ReservationModel model = DataContext as ReservationModel;
+
+            if (model.StartDate > model.EndDate)
+            {
+                MessageBox.Show("Nieprawidłowe ustawienie dat", "Błąd");
+                return;
+            }
 
             if (model.Mode == ReservationModel.INSERT)
             {
@@ -33,11 +45,19 @@ namespace Restaurateur.Forms
             Back();
         }
 
+        /// <summary>
+        /// Anulowanie formularza
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             Back();
         }
 
+        /// <summary>
+        /// Powrót do poprzedniego okna
+        /// </summary>
         private void Back()
         {
             MainWindow window = (MainWindow)Application.Current.MainWindow;

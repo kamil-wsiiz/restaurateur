@@ -15,8 +15,14 @@ namespace Restaurateur.Forms
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Wysyłka formularza
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
+            // Pobranie modelu z formularza
             WarehouseModel model = DataContext as WarehouseModel;
 
             if (model.Mode == TableModel.INSERT)
@@ -33,11 +39,19 @@ namespace Restaurateur.Forms
             Back();
         }
 
+        /// <summary>
+        /// Anulowanie formularza
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             Back();
         }
 
+        /// <summary>
+        /// Powrót do poprzedniego okna
+        /// </summary>
         private void Back()
         {
             MainWindow window = (MainWindow)Application.Current.MainWindow;

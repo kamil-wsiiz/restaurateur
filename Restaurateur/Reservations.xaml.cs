@@ -17,17 +17,30 @@ namespace Restaurateur
             RefreshGrid();
         }
 
+        /// <summary>
+        /// Obsługa przycisku usuwania
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
             ReservationDao.Delete((long)(sender as Button).Tag);
             RefreshGrid();
         }
 
+        /// <summary>
+        /// Odświezanie danych
+        /// </summary>
         private void RefreshGrid()
         {
             ReservationsDataGrid.ItemsSource = ReservationDao.LoadAll();
         }
 
+        /// <summary>
+        /// Obsługa przycisku dodawania
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Add_Click(object sender, RoutedEventArgs e)
         {
             MainWindow window = (MainWindow)Application.Current.MainWindow;
@@ -38,7 +51,12 @@ namespace Restaurateur
             window.GridMain.Children.Clear();
             window.GridMain.Children.Add(uc);
         }
-
+        
+        /// <summary>
+        /// Obsluga przycisku edycji
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
             MainWindow window = (MainWindow)Application.Current.MainWindow;
