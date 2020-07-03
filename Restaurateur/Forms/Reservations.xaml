@@ -84,7 +84,7 @@
                         </Binding>
                     </materialDesign:TimePicker.Text>
                 </materialDesign:TimePicker>
-                <ComboBox x:Name="InputTableId" ItemsSource="{Binding Tables}" IsSynchronizedWithCurrentItem="True"  DisplayMemberPath="Name" Width="200" Margin="0,20,0,0" Grid.Row="5">
+                <ComboBox x:Name="InputTableId" materialDesign:HintAssist.Hint="Stolik" ItemsSource="{Binding Tables}" IsSynchronizedWithCurrentItem="True"  DisplayMemberPath="Name" Width="200" Margin="0,20,0,0" Grid.Row="5">
                     <ComboBox.SelectedItem>
                         <Binding Path="Table" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
@@ -97,7 +97,7 @@
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,5,5">
-            <Button Margin="5" Content="Dodaj" Background="Green" BorderBrush="Green" Click="Submit_Click" Tag="{Binding Mode}">
+            <Button Margin="5" Content="Dodaj" Background="Green" BorderBrush="Green" Click="Submit_Click">
                 <Button.IsEnabled>
                     <MultiBinding Converter="{StaticResource MultiBooleanConverter}" Mode="TwoWay">
                         <Binding ElementName="InputFirstName" Path="(Validation.HasError)" />

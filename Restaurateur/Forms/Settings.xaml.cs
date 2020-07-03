@@ -17,29 +17,20 @@ namespace Restaurateur.Forms
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-            string idValue = InputId.Text;
-            int id = int.Parse(idValue);
-            string name = InputName.Text;
-            string mode = (sender as Button).Tag.ToString();
+            TableModel model = DataContext as TableModel;
 
-            if (mode == TableModel.UPDATE && TableDao.LoadById(id) != null)
+            if (model.Mode == TableModel.UPDATE && TableDao.LoadById(model.Id) != null)
             {
                 MessageBox.Show("Ten numer stolika jest już zajęty", "Dodawanie stolika");
                 return;
             }
 
-            TableModel model = new TableModel
-            {
-                Id = id,
-                Name = name
-            };
-
-            if (mode == TableModel.INSERT)
+            if (model.Mode == TableModel.INSERT)
             {
                 TableDao.Insert(model);
                 MessageBox.Show("Stolik został dodany", "Dodawanie stolika");
             }
-            else if (mode == TableModel.UPDATE)
+            else if (model.Mode == TableModel.UPDATE)
             {
                 TableDao.Update(model);
                 MessageBox.Show("Zmiany zostały zapisane", "Edycja stolika");

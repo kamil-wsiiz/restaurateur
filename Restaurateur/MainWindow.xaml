@@ -63,12 +63,6 @@
                             <TextBlock Text="Zamówienia" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem x:Name="ItemIngredients" Height="60">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Food" Height="25" Width="25" Margin="15 10"/>
-                            <TextBlock Text="Składniki" VerticalAlignment="Center" Margin="20 10"/>
-                        </StackPanel>
-                    </ListViewItem>
                     <ListViewItem x:Name="ItemWarehouse" Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Warehouse" Height="25" Width="25" Margin="15 10"/>

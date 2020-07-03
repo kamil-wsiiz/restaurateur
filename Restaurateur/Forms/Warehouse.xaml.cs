@@ -6,28 +6,28 @@ using System.Windows.Controls;
 namespace Restaurateur.Forms
 {
     /// <summary>
-    /// Klasa obsługująca formularz dodawania i edycji rezerwacji
+    /// Klasa obsługująca formularz magazynu
     /// </summary>
-    public partial class Reservations : UserControl
+    public partial class Warehouse : UserControl
     {
-        public Reservations()
+        public Warehouse()
         {
             InitializeComponent();
         }
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-            ReservationModel model = DataContext as ReservationModel;
+            WarehouseModel model = DataContext as WarehouseModel;
 
-            if (model.Mode == ReservationModel.INSERT)
+            if (model.Mode == TableModel.INSERT)
             {
-                ReservationDao.Insert(model);
-                MessageBox.Show("Rezerwacja została dodana", "Dodawanie rezerwacji");
+                WarehouseDao.Insert(model);
+                MessageBox.Show("Produkt został dodany", "Dodawanie produktu");
             }
-            else if (model.Mode == ReservationModel.UPDATE)
+            else if (model.Mode == TableModel.UPDATE)
             {
-                ReservationDao.Update(model);
-                MessageBox.Show("Zmiany zostały zapisane", "Edytowanie rezerwacji");
+                WarehouseDao.Update(model);
+                MessageBox.Show("Zmiany zostały zapisane", "Edycja produktu");
             }
 
             Back();
@@ -41,7 +41,7 @@ namespace Restaurateur.Forms
         private void Back()
         {
             MainWindow window = (MainWindow)Application.Current.MainWindow;
-            UserControl uc = new Restaurateur.Reservations();
+            UserControl uc = new Restaurateur.Warehouse();
             window.GridMain.Children.Clear();
             window.GridMain.Children.Add(uc);
         }

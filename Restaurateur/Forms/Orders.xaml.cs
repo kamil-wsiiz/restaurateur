@@ -8,26 +8,26 @@ namespace Restaurateur.Forms
     /// <summary>
     /// Klasa obsługująca formularz dodawania i edycji rezerwacji
     /// </summary>
-    public partial class Reservations : UserControl
+    public partial class Orders : UserControl
     {
-        public Reservations()
+        public Orders()
         {
             InitializeComponent();
         }
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-            ReservationModel model = DataContext as ReservationModel;
+            OrderModel model = DataContext as OrderModel;
 
-            if (model.Mode == ReservationModel.INSERT)
+            if (model.Mode == OrderModel.INSERT)
             {
-                ReservationDao.Insert(model);
-                MessageBox.Show("Rezerwacja została dodana", "Dodawanie rezerwacji");
+                OrderDao.Insert(model);
+                MessageBox.Show("Zamówienie zostało dodane", "Dodawanie zamówienia");
             }
-            else if (model.Mode == ReservationModel.UPDATE)
+            else if (model.Mode == OrderModel.UPDATE)
             {
-                ReservationDao.Update(model);
-                MessageBox.Show("Zmiany zostały zapisane", "Edytowanie rezerwacji");
+                OrderDao.Update(model);
+                MessageBox.Show("Zmiany zostały zapisane", "Edycja zamówienia");
             }
 
             Back();
@@ -41,7 +41,7 @@ namespace Restaurateur.Forms
         private void Back()
         {
             MainWindow window = (MainWindow)Application.Current.MainWindow;
-            UserControl uc = new Restaurateur.Reservations();
+            UserControl uc = new Restaurateur.Orders();
             window.GridMain.Children.Clear();
             window.GridMain.Children.Add(uc);
         }

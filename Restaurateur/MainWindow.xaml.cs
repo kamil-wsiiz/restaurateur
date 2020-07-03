@@ -69,11 +69,6 @@ namespace Restaurateur
                         GridMain.Children.Add(uc);
                         break;
 
-                    case "ItemIngredients":
-                        uc = new Ingredients();
-                        GridMain.Children.Add(uc);
-                        break;
-
                     case "ItemWarehouse":
                         uc = new Warehouse();
                         GridMain.Children.Add(uc);

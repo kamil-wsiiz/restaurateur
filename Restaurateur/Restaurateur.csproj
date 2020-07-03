@@ -85,19 +85,28 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DAO\BasicDao.cs" />
-    <Compile Include="DAO\IngredientsDao.cs" />
+    <Compile Include="DAO\OrderDao.cs" />
+    <Compile Include="DAO\WarehouseDao.cs" />
     <Compile Include="DAO\TableDao.cs" />
+    <Compile Include="Forms\Orders.xaml.cs">
+      <DependentUpon>Orders.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Reservations.xaml.cs">
       <DependentUpon>Reservations.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Warehouse.xaml.cs">
+      <DependentUpon>Warehouse.xaml</DependentUpon>
     </Compile>
     <Compile Include="Forms\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
     <Compile Include="Forms\MultiBooleanConverter.cs" />
+    <Compile Include="Models\OrderModel.cs" />
     <Compile Include="Models\TableModel.cs" />
-    <Compile Include="Models\IngredientModel.cs" />
+    <Compile Include="Models\WarehouseModel.cs" />
     <Compile Include="Models\ReservationModel.cs" />
     <Compile Include="DAO\ReservationDao.cs" />
+    <Compile Include="Rules\NotEmptyIntValidationRule.cs" />
     <Compile Include="Rules\NotEmptyValidationRule.cs" />
     <Compile Include="Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
@@ -105,16 +114,21 @@
     <Compile Include="Warehouse.xaml.cs">
       <DependentUpon>Warehouse.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Ingredients.xaml.cs">
-      <DependentUpon>Ingredients.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Orders.xaml.cs">
       <DependentUpon>Orders.xaml</DependentUpon>
     </Compile>
     <Compile Include="Reservations.xaml.cs">
       <DependentUpon>Reservations.xaml</DependentUpon>
     </Compile>
+    <Page Include="Forms\Orders.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Forms\Reservations.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Forms\Warehouse.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -123,10 +137,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Settings.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Warehouse.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -142,7 +152,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Ingredients.xaml">
+    <Page Include="Warehouse.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

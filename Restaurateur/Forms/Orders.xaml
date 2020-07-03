@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="Restaurateur.Forms.Orders"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:rules="clr-namespace:Restaurateur.Rules"
+	  xmlns:local="clr-namespace:Restaurateur.Forms"
+      mc:Ignorable="d" 
+      d:DesignHeight="572" d:DesignWidth="720">
+
+    <UserControl.Resources>
+        <local:MultiBooleanConverter x:Key="MultiBooleanConverter" />
+    </UserControl.Resources>
+
+    <Grid x:Name="Form" Margin="5,5,0,0">
+        <StackPanel>
+            <TextBlock Margin="5" Text="{Binding TitleText}" FontWeight="Bold" FontSize="18"/>
+            <Grid HorizontalAlignment="Left" Margin="5,0,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200" />
+                    <ColumnDefinition Width="205" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBox x:Name="InputId" Text="{Binding Id}" Width="200" Visibility="Hidden" />
+                <ComboBox x:Name="InputStatus" materialDesign:HintAssist.Hint="Status" ItemsSource="{Binding Statuses}" SelectedValuePath="Key" DisplayMemberPath="Value" Width="200" Margin="0,20,0,0" Grid.Row="0">
+                    <ComboBox.SelectedValue>
+                        <Binding Path="Status" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
+                    </ComboBox.SelectedValue>
+                </ComboBox>
+                <ComboBox x:Name="InputTableId" materialDesign:HintAssist.Hint="Stolik" ItemsSource="{Binding Tables}" IsSynchronizedWithCurrentItem="True"  DisplayMemberPath="Name" Width="200" Margin="0,20,0,0" Grid.Row="1">
+                    <ComboBox.SelectedItem>
+                        <Binding Path="Table" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <rules:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </ComboBox.SelectedItem>
+                </ComboBox>
+                <ComboBox x:Name="InputProductId" materialDesign:HintAssist.Hint="Produkt" ItemsSource="{Binding Products}" IsSynchronizedWithCurrentItem="True"  DisplayMemberPath="Name" Width="200" Margin="0,20,0,0" Grid.Row="2">
+                    <ComboBox.SelectedItem>
+                        <Binding Path="Product" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <rules:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </ComboBox.SelectedItem>
+                </ComboBox>
+                <TextBox x:Name="InputAmount" materialDesign:HintAssist.Hint="Ilość" Margin="0,20,0,0" Width="200" Grid.Row="3">
+                    <TextBox.Text>
+                        <Binding Path="Amount" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnNotifyDataErrors="True">
+                            <Binding.ValidationRules>
+                                <rules:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </Grid>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,5,5">
+            <Button Margin="5" Content="Dodaj" Background="Green" BorderBrush="Green" Click="Submit_Click">
+                <Button.IsEnabled>
+                    <MultiBinding Converter="{StaticResource MultiBooleanConverter}" Mode="TwoWay">
+                        <Binding ElementName="InputTableId" Path="(Validation.HasError)" />
+                        <Binding ElementName="InputProductId" Path="(Validation.HasError)" />
+                        <Binding ElementName="InputAmount" Path="(Validation.HasError)" />
+                    </MultiBinding>
+                </Button.IsEnabled>
+            </Button>
+            <Button Margin="5" Content="Anuluj" Background="Red" BorderBrush="Red" Click="Cancel_Click" />
+        </StackPanel>
+    </Grid>
+
+</UserControl>

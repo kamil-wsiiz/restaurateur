@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Restaurateur.Forms.Settings"
+﻿<UserControl x:Class="Restaurateur.Forms.Warehouse"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -21,20 +21,21 @@
                     <RowDefinition />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <TextBox x:Name="InputId" materialDesign:HintAssist.Hint="Numer stolika" Width="200" Grid.Row="0" IsEnabled="{Binding IsInsert}">
+                <TextBox x:Name="InputId" Text="{Binding Id}" Width="200" Visibility="Hidden" />
+                <TextBox x:Name="InputName" materialDesign:HintAssist.Hint="Nazwa produktu" Margin="0,20,0,0" Width="200" Grid.Row="0">
                     <TextBox.Text>
-                        <Binding Path="Id" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        <Binding Path="Name" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnNotifyDataErrors="True">
                             <Binding.ValidationRules>
                                 <rules:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
-                <TextBox x:Name="InputName" materialDesign:HintAssist.Hint="Nazwa stolika" Margin="0,20,0,0" Width="200" Grid.Row="1">
+                <TextBox x:Name="InputAmount" materialDesign:HintAssist.Hint="Ilość produktu" Margin="0,20,0,0" Width="200" Grid.Row="1">
                     <TextBox.Text>
-                        <Binding Path="Name" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnNotifyDataErrors="True">
+                        <Binding Path="Amount" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnNotifyDataErrors="True">
                             <Binding.ValidationRules>
-                                <rules:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                                <rules:NotEmptyIntValidationRule ValidatesOnTargetUpdated="True" />
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
@@ -47,8 +48,8 @@
             <Button Margin="5" IsDefault="True" Content="Dodaj" Background="Green" BorderBrush="Green" Click="Submit_Click">
                 <Button.IsEnabled>
                     <MultiBinding Converter="{StaticResource MultiBooleanConverter}" Mode="TwoWay">
-                        <Binding ElementName="InputId" Path="(Validation.HasError)" />
                         <Binding ElementName="InputName" Path="(Validation.HasError)" />
+                        <Binding ElementName="InputAmount" Path="(Validation.HasError)" />
                     </MultiBinding>
                 </Button.IsEnabled>
             </Button>
