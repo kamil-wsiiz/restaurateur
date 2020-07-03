@@ -4,9 +4,30 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800">
+      d:DesignHeight="572" d:DesignWidth="720">
 
     <Grid>
-        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Zamówienia" VerticalAlignment="Center" Foreground="Black"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="Zamówienia" VerticalAlignment="Top"/>
+        <DataGrid x:Name="OrdersDataGrid" HorizontalAlignment="Left" Height="487" Margin="0,40,0,0" VerticalAlignment="Top" Width="720" AutoGenerateColumns="False" ItemsSource="{Binding}" CanUserAddRows="False" CanUserDeleteRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding TableName}" Width="120" Header="Stolik" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding ProductName}" Width="160" Header="Produkt" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Amount}" Width="100" Header="Ilość" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding StatusName}" Width="110" Header="Status" IsReadOnly="True"/>
+                <DataGridTemplateColumn Width="230" Header="Akcje">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Background="Blue" BorderBrush="Blue" Width="100" Click="Edit_Click" Tag="{Binding Id}" IsEnabled="{Binding IsMutable}">Edytuj</Button>
+                                <Button Background="Red" BorderBrush="Red" Width="100" Margin="5,0,0,0" Click="Delete_Click" Tag="{Binding Id}" IsEnabled="{Binding IsMutable}">Usuń</Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Background="Green" BorderBrush="Green" Content="Dodaj" HorizontalAlignment="Right" Margin="0,0,5,5" VerticalAlignment="Bottom" Width="75" Click="Add_Click"/>
+
     </Grid>
+
 </UserControl>

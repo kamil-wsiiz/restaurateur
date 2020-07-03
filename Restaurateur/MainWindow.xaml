@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        mc:Ignorable="d" Title="Restaurator" Height="600" Width="800" Foreground="White" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
+        mc:Ignorable="d" Title="Restaurator" Height="600" Width="800" Foreground="Black" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Storyboard x:Key="OpenMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
@@ -61,12 +61,6 @@
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Receipt" Height="25" Width="25" Margin="15 10"/>
                             <TextBlock Text="Zamówienia" VerticalAlignment="Center" Margin="20 10"/>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem x:Name="ItemIngredients" Height="60">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Food" Height="25" Width="25" Margin="15 10"/>
-                            <TextBlock Text="Składniki" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem x:Name="ItemWarehouse" Height="60">
