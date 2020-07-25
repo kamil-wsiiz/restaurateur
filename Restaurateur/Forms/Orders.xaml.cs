@@ -18,8 +18,8 @@ namespace Restaurateur.Forms
         /// <summary>
         /// Wysłanie formularza
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Obiekt wywołujący zdarzenie</param>
+        /// <param name="e">Obiekt zawierający parametry zdarzenia</param>
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
             // Pobranie modelu z formularza
@@ -56,8 +56,8 @@ namespace Restaurateur.Forms
         /// <summary>
         /// Anulowanie fomularza
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Obiekt wywołujący zdarzenie</param>
+        /// <param name="e">Obiekt zawierający parametry zdarzenia</param>
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             Back();

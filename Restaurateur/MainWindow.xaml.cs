@@ -20,12 +20,12 @@ namespace Restaurateur
         {
             InitializeComponent();
         }
-        
+
         /// <summary>
         /// Otwieranie menu
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Obiekt wywołujący zdarzenie</param>
+        /// <param name="e">Obiekt zawierający parametry zdarzenia</param>
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
         {
             ButtonCloseMenu.Visibility = Visibility.Visible;
@@ -35,8 +35,8 @@ namespace Restaurateur
         /// <summary>
         /// Zamykanie menu
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Obiekt wywołujący zdarzenie</param>
+        /// <param name="e">Obiekt zawierający parametry zdarzenia</param>
         private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
         {
             ButtonCloseMenu.Visibility = Visibility.Collapsed;
@@ -46,8 +46,8 @@ namespace Restaurateur
         /// <summary>
         /// Obsługa menu
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Obiekt wywołujący zdarzenie</param>
+        /// <param name="e">Obiekt zawierający parametry zdarzenia</param>
         private void Menu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ListViewItem item = (ListViewItem)((ListView)sender).SelectedItem;

@@ -11,10 +11,10 @@ namespace Restaurateur.Forms
         /// <summary>
         /// Konwertowanie informacji o błędach w formularzu do wartości logicznej
         /// </summary>
-        /// <param name="values"></param>
-        /// <param name="targetType"></param>
-        /// <param name="parameter"></param>
-        /// <param name="culture"></param>
+        /// <param name="values">Tablica wartości, które tworzy powiązania źródłowe w MultiBinding. Wartość UnsetValue wskazuje, że powiązanie źródłowe nie ma wartości do zapewnienia konwersji</param>
+        /// <param name="targetType">Typ właściwości docelowej powiązania</param>
+        /// <param name="parameter">Parametr konwertera do użycia</param>
+        /// <param name="culture">Kultura, która ma być używana w konwerterze</param>
         /// <returns>
         /// Wartość logiczna - formularz ma/nie ma błędów
         /// </returns>
@@ -33,6 +33,14 @@ namespace Restaurateur.Forms
             return true;
         }
 
+        /// <summary>
+        /// Obsługa niezaimplementowanej konwersji zwrotnej (metoda wyrzuca wyjątek)
+        /// </summary>
+        /// <param name="value">Wartość dostarczana przez obiekt docelowy powiązania</param>
+        /// <param name="targetTypes">Tablica typów do przekonwertowania na. Długość tablicy wskazuje liczbę i typy wartości, które są sugerowane dla metody do zwrócenia</param>
+        /// <param name="parameter">Parametr konwertera do użycia</param>
+        /// <param name="culture">Kultura, która ma być używana w konwerterze</param>
+        /// <returns>Wymagane dla nadpisania</returns>
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, System.Globalization.CultureInfo culture)
         {
             throw new NotImplementedException();
