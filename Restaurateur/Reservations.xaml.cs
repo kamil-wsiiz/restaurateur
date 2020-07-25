@@ -20,8 +20,8 @@ namespace Restaurateur
         /// <summary>
         /// Obsługa przycisku usuwania
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Obiekt wywołujący zdarzenie</param>
+        /// <param name="e">Obiekt zawierający parametry zdarzenia</param>
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
             ReservationDao.Delete((long)(sender as Button).Tag);
@@ -39,8 +39,8 @@ namespace Restaurateur
         /// <summary>
         /// Obsługa przycisku dodawania
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Obiekt wywołujący zdarzenie</param>
+        /// <param name="e">Obiekt zawierający parametry zdarzenia</param>
         private void Add_Click(object sender, RoutedEventArgs e)
         {
             MainWindow window = (MainWindow)Application.Current.MainWindow;
@@ -51,12 +51,12 @@ namespace Restaurateur
             window.GridMain.Children.Clear();
             window.GridMain.Children.Add(uc);
         }
-        
+
         /// <summary>
         /// Obsluga przycisku edycji
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Obiekt wywołujący zdarzenie</param>
+        /// <param name="e">Obiekt zawierający parametry zdarzenia</param>
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
             MainWindow window = (MainWindow)Application.Current.MainWindow;
